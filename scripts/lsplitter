@@ -1,0 +1,13 @@
+#!/bin/bash
+set -x
+filepath=$(echo ${PWD}/$1)
+filename=$(echo ${filepath} | cut -d '.' -f1)
+ffmpeg -i $filepath -an -c copy $(echo ${filename}-v.mp4)
+ffmpeg -i $filepath -c copy $(echo ${filename}.m4a)
+lvoice $(echo ${filename}.m4a) .
+ffmpeg -i $(echo ${filename}-v.mp4) -i out.mp3 \
+-c:v copy -c:a aac -strict experimental $(echo ${filename}-convert.mp4)
+rm $(echo ${filename}-v.mp4)
+rm out.mp3
+rm $(echo ${filename}.m4a)
+set +x
