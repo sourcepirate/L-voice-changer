@@ -1,6 +1,6 @@
 ## LVOICE CHANGER
 
-I was playing around with audicity app today on my computer. In that app i was able to change my voice to *Death Note L's* Voice by overlapping multiple audiotracks at extreme pitches.
+I was playing around with audicity app today on my computer. In that app I was able to change my voice to *Death Note L's* Voice by overlapping multiple audiotracks at extreme pitches.
 
 This project is an attempt to reproduce the same with FFMPEG and rust.
 
