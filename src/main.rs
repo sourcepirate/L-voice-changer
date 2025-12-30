@@ -42,11 +42,17 @@ fn main() {
         exit(1);
     }
     let lowpass_file = temp::TempAudio::from_source(input_path.to_str().unwrap(),
-                                                    command::AudioType::LOWPASS);
+                                                    command::AudioType::Lowpass);
     let highpass_file = temp::TempAudio::from_source(input_path.to_str().unwrap(),
-                                                     command::AudioType::HIGHPASS);
-    lowpass_file.create(input_path.to_str().unwrap());
-    highpass_file.create(input_path.to_str().unwrap());
+                                                     command::AudioType::Highpass);
+    if let Err(e) = lowpass_file.create(input_path.to_str().unwrap()) {
+        println!("Error creating lowpass file: {:?}", e);
+        exit(1);
+    }
+    if let Err(e) = highpass_file.create(input_path.to_str().unwrap()) {
+        println!("Error creating highpass file: {:?}", e);
+        exit(1);
+    }
     output_path.push("out.mp3");
     debug!("{:?}", input_path);
     debug!("{:?}", output_path);

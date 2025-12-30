@@ -1,14 +1,14 @@
 
 use std::process::Command;
-use temp::TempAudio;
+use crate::temp::TempAudio;
 
 const HP_FREQ : &str = "atempo=3/4,asetrate=44100*4/3";
 const LP_FREQ : &str = "atempo=3/2,asetrate=44100*2/3";
 
 #[derive(Copy, Debug, Clone)]
 pub enum AudioType {
-    LOWPASS,
-    HIGHPASS
+    Lowpass,
+    Highpass
 }
 
 #[derive(Copy, Debug, Clone)]
@@ -20,15 +20,15 @@ pub enum FFMPEGError {
 impl AudioType {
     pub fn get_ext(self) -> &'static str {
         match self {
-            AudioType::LOWPASS => "lp.wav",
-            AudioType::HIGHPASS => "hp.wav"
+            AudioType::Lowpass => "lp.wav",
+            AudioType::Highpass => "hp.wav"
         }
     }
 
     pub fn choose_freq(self) -> &'static str {
         match self {
-            AudioType::LOWPASS => LP_FREQ,
-            AudioType::HIGHPASS => HP_FREQ
+            AudioType::Lowpass => LP_FREQ,
+            AudioType::Highpass => HP_FREQ
         }
     }
 }

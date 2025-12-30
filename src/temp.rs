@@ -1,6 +1,6 @@
-use std::fs::{File, remove_file};
+use std::fs::remove_file;
 use std::path::PathBuf;
-use command::{convert_to, FFMPEGError, AudioType};
+use crate::command::{convert_to, FFMPEGError, AudioType};
 
 pub struct TempAudio {
    path: String,
@@ -10,8 +10,8 @@ pub struct TempAudio {
 impl TempAudio {
    pub fn new(path: String, atype: AudioType) -> Self {
      TempAudio {
-         path: path,
-         atype: atype
+         path,
+         atype
      }
    }
 
@@ -33,8 +33,8 @@ impl TempAudio {
 }
 
 impl Drop for TempAudio {
-    fn drop(&mut self) -> () {
-        remove_file(self.path.as_str());
+    fn drop(&mut self) {
+        let _ = remove_file(self.path.as_str());
     }
 }
 
