@@ -2,6 +2,7 @@
 name = "lvoice"
 version = "0.1.0"
 authors = ["sourcepirate <plasmashadowx@gmail.com>"]
+edition = "2021"
 
 [dependencies]
 clap = "2.31.2"
